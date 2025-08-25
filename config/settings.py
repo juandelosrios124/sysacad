@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()  # Cargar las variables de entorno desde el archivo .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # tus apps
+    'apps.courses',
+    'apps.exams',
+    'apps.faculty',
+    'apps.management',
+    'apps.scda',
+    'apps.students',
+    'apps.users',
 ]
 
 MIDDLEWARE = [
@@ -74,8 +85,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.getenv ('ENGINE'), # esto es para usar PostgreSQL
+        'NAME': os.getenv('NAME'), # nombre de la base de datos
+        'USER': os.getenv('USER'), # usuario de la base de datos
+        'PASSWORD':os.getenv('PASSWORD') , # contraseña del usuario
+        'HOST': os.getenv('HOST'), # host de la base de datos
+        'PORT': os.getenv('PORT') , # puerto de la base de datos (por defecto es 5432 para PostgreSQL)
     }
 }
 
