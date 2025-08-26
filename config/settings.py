@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'apps.exams',
     'apps.faculty',
     'apps.management',
-    'apps.scda',
     'apps.students',
     'apps.users',
+    'apps.spetialization',
+    'apps.role',
+    'apps.core',
 ]
 
 MIDDLEWARE = [
